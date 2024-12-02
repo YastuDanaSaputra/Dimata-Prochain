@@ -1,27 +1,39 @@
+import React, { useEffect } from "react";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const StoryAbout = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
-    <div className="mt-20 p-20 flex flex-col items-center lg:mb-20 lg:flex-row lg:justify-between lg:items-start ">
-      <div className="lg:w-1/2 flex justify-center">
+    <div className="mt-20 p-20 flex flex-col items-center lg:mb-20 lg:flex-row lg:justify-between lg:items-start">
+      <div className="lg:w-1/2 flex justify-center" data-aos="fade-right">
         <Image
-          src="/img/about/tangan.png"
+          src="/Image/About/story.jpg"
           alt="story"
           width={500}
           height={500}
         />
       </div>
-      <div className="mt-10 lg:mt-0 lg:w-1/2 lg:pl-10 lg:mt-20 lg:p-10">
-        <hr className="w-9 bg-indigo-900 h-0.5 " />
-        <span className="text-indigo-900">OUR STORY</span>
+      <div
+        className="mt-10 lg:mt-0 lg:w-1/2 lg:pl-10 lg:mt-20 lg:p-10"
+        data-aos="fade-left"
+      >
+        <hr className="w-9 bg-orange-600 h-0.5 " />
+        <span className="text-orange-500">OUR STORY</span>
         <h1 className="text-black font-bold text-4xl mt-4 text-gray-800 lg:w-3/4">
-          Turning visions into reality.
+          Empowering Business Through Innovation.
         </h1>
-        <h1 className="text-black font-bold text-4xl mt-4 text-gray-800"></h1>
         <p className="text-black text-sm mt-4 text-gray-700 lg:w-2/3">
-          Dimata IT Solutions was founded in 2002 with a vision to develop smart
-          information systems using the latest technologies. We have
-          successfully delivered software solutions for various industries.
+          ProChain was founded with a vision to empower businesses by
+          simplifying complex operations, delivering a seamless, centralized
+          platform that fosters growth and efficiency across industries.
         </p>
       </div>
     </div>

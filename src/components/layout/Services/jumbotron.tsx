@@ -1,5 +1,5 @@
 import Image from "next/image";
-import conferenceImage from "@/images/image24.png";
+import conferenceImage from "@/images/images25.jpg";
 
 const JumbotronServices = () => {
   return (
@@ -13,6 +13,9 @@ const JumbotronServices = () => {
         objectFit="cover"
         className="z-0"
       />
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      {/* Centered Text */}
       <div className="relative z-1 px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
         <h1 className="mb-4 text-4xl font-semibold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           SERVICES

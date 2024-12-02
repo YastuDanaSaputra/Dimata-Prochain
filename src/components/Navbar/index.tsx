@@ -1,26 +1,32 @@
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-// import Image from 'next/image';
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen((prevState) => !prevState);
+  };
+
   return (
-    <nav className="absolute bg-transparent w-full border-gray-200 dark:bg-gray-900">
+    <nav className="absolute top-0 w-full bg-transparent z-50">
       <div className="flex flex-wrap items-center justify-around mx-auto h-20">
         <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <span className="text-white self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
-            DIMATA
+          <span className="text-white text-3xl font-semibold whitespace-nowrap">
+            Prochain
           </span>
         </Link>
         <button
-          data-collapse-toggle="navbar-default"
           type="button"
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-default"
-          aria-expanded="false"
+          aria-expanded={isMenuOpen ? "true" : "false"}
+          onClick={handleMenuToggle}
         >
           <span className="sr-only">Open main menu</span>
           <svg
@@ -40,10 +46,12 @@ export default function Navbar() {
           </svg>
         </button>
         <div
-          className="hidden justify-end w-full md:block md:w-auto"
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } justify-end w-full md:block md:w-auto`}
           id="navbar-default"
         >
-          <ul className="font-medium text-xl flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+          <ul className="font-medium text-xl flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
             <li>
               <Link
                 href="/"
@@ -83,30 +91,6 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/products"
-                className={`block py-2 px-3 ${
-                  router.pathname === "/products"
-                    ? "text-amber-500"
-                    : "text-white hover:text-amber-600"
-                } md:p-0`}
-              >
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                className={`block py-2 px-3 ${
-                  router.pathname === "/projects"
-                    ? "text-amber-500"
-                    : "text-white hover:text-amber-600"
-                } md:p-0`}
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/contact"
                 className={`block py-2 px-3 ${
                   router.pathname === "/contact"
@@ -119,7 +103,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/auth"
+                href="/login"
                 className="block px-5 text-white bg-amber-500 rounded hover:bg-amber-600"
               >
                 Login

@@ -1,5 +1,4 @@
-// ServicesView.jsx
-import JumbotronServices from "@/components/layout/Services/jumbotron"; // Pastikan jalurnya benar
+import JumbotronServices from "@/components/layout/Services/jumbotron";
 
 const ServicesView = () => {
   return <></>;
